@@ -1,15 +1,15 @@
-# perform-api
+# artemis-api
 
-Backend da plataforma **Perform** — sistema de análise de performance técnica de desenvolvedores para Tech Leads.
+Backend da plataforma **Artemis** — sistema de análise de performance técnica de desenvolvedores para Tech Leads.
 
-Construído com **NestJS + TypeORM + PostgreSQL (Neon)**. Integra-se ao GitHub via API/webhooks para coletar PRs e commits, e se comunica com o `perform-ai` para análise de complexidade por IA.
+Construído com **NestJS + TypeORM + PostgreSQL (Neon)**. Integra-se ao GitHub via API/webhooks para coletar PRs e commits, e se comunica com o `artemis-ai` para análise de complexidade por IA.
 
 ---
 
 ## O que faz
 
 - Sincroniza PRs, commits e code reviews do GitHub automaticamente
-- Orquestra análises de complexidade de código via `perform-ai` (Dual-LLM + RAG)
+- Orquestra análises de complexidade de código via `artemis-ai` (Dual-LLM + RAG)
 - Calcula métricas temporais por desenvolvedor: lead time, cycle time, review time
 - Expõe insights de evolução de performance por desenvolvedor (scores, tendências, pontos fortes)
 - Gerencia squads, usuários e permissões
@@ -23,7 +23,7 @@ Construído com **NestJS + TypeORM + PostgreSQL (Neon)**. Integra-se ao GitHub v
 - **TypeORM** — ORM TypeScript
 - **PostgreSQL via NeonDB** — banco de dados serverless (SA-East-1)
 - **JWT** — autenticação
-- **Axios** — comunicação com `perform-ai` e GitHub API
+- **Axios** — comunicação com `artemis-ai` e GitHub API
 
 ---
 
@@ -31,7 +31,7 @@ Construído com **NestJS + TypeORM + PostgreSQL (Neon)**. Integra-se ao GitHub v
 
 - Node.js 20+
 - Acesso ao banco NeonDB (ou PostgreSQL local)
-- `perform-ai` rodando (ou via Docker Compose)
+- `artemis-ai` rodando (ou via Docker Compose)
 
 ---
 
@@ -92,7 +92,7 @@ API disponível em `http://localhost:3000`
 src/
 ├── ai-analysis/           # Análise de PRs via IA
 │   ├── entities/          # PrAnalysis, DeveloperEvolution
-│   ├── ai-analysis.service.ts    # Orquestra chamadas ao perform-ai
+│   ├── ai-analysis.service.ts    # Orquestra chamadas ao artemis-ai
 │   └── ai-analysis.controller.ts # POST /ai-analysis/trigger, /trigger-batch
 ├── auth/                  # JWT, login, registro
 ├── developers/            # Perfis técnicos vinculados ao GitHub
@@ -141,15 +141,15 @@ GET   /github/developers/:id         # Perfil de um desenvolvedor
 
 ---
 
-## Análise de IA (perform-ai integration)
+## Análise de IA (artemis-ai integration)
 
-O `perform-api` atua como orquestrador entre o frontend e o `perform-ai`:
+O `artemis-api` atua como orquestrador entre o frontend e o `artemis-ai`:
 
 1. Frontend clica "Analyze code" na página do desenvolvedor
-2. `perform-api` recebe os IDs das PRs via `POST /ai-analysis/trigger-batch`
-3. Para cada PR, busca o diff no GitHub e envia para o `perform-ai`
-4. `perform-ai` retorna: `score`, `confidence`, `difficulty_label`, `justification`, `technologies`
-5. `perform-api` persiste o resultado e notifica via callback
+2. `artemis-api` recebe os IDs das PRs via `POST /ai-analysis/trigger-batch`
+3. Para cada PR, busca o diff no GitHub e envia para o `artemis-ai`
+4. `artemis-ai` retorna: `score`, `confidence`, `difficulty_label`, `justification`, `technologies`
+5. `artemis-api` persiste o resultado e notifica via callback
 6. Frontend atualiza os insights do desenvolvedor em tempo real
 
 ### Métricas de evolução temporal
