@@ -60,7 +60,7 @@ export class GithubService {
         step2: 'Crie um Personal Access Token com as seguintes permissões:',
         scopes: ['repo', 'read:user', 'admin:repo_hook'],
         step3: 'Copie o token gerado e cole na aplicação',
-        note: 'Recomendamos usar: "Perform - Desktop App"',
+        note: 'Recomendamos usar: "Artemis - Desktop App"',
       },
       alternativeMethod: {
         name: 'GitHub Device Flow',

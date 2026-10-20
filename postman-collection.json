@@ -1,7 +1,7 @@
 {
   "info": {
-    "name": "Perform API - Authentication",
-    "description": "Coleção de testes para API de autenticação do Perform",
+    "name": "Artemis API - Authentication",
+    "description": "Coleção de testes para API de autenticação do Artemis",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [

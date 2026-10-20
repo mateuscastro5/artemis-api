@@ -63,7 +63,7 @@ GITHUB_TOKEN=ghp_seu_token_aqui
 GITHUB_WEBHOOK_SECRET=seu_webhook_secret
 
 # Serviço de IA
-AI_SERVICE_URL=http://perform-ai:8000
+AI_SERVICE_URL=http://artemis-ai:8000
 AI_SERVICE_API_KEY=perform_internal_key_2024
 
 # CORS
